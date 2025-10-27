@@ -1,0 +1,1056 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Emma Carter — Luxury Dubai Real Estate</title>
+  <meta name="description" content="Emma Carter — Luxury real estate advisor in Dubai. Exclusive properties, high-end clients, trusted service." />
+
+  <!-- ---------------------------
+       Google Fonts (luxury combo)
+       Playfair Display = elegant headings
+       Poppins = clean modern body text
+       --------------------------- -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Font Awesome for icons (change version or provider if you prefer) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="" crossorigin="anonymous" />
+
+  <!-- ===========================
+       INTERNAL CSS — Edit variables below
+       =========================== -->
+  <style>
+    /* =========================
+       Design tokens (change here to restyle)
+       ========================= */
+    :root{
+      --bg: #060606;               /* main page bg */
+      --card-bg: rgba(255,255,255,0.03);
+      --muted: #cfc7c0;
+      --accent: #c7a86b;          /* luxurious gold */
+      --accent-2: #f0e9df;        /* light cream */
+      --glass: rgba(255,255,255,0.04);
+      --max-width: 1200px;
+      --radius: 14px;
+      --transition: 250ms ease;
+    }
+
+    /* =========================
+       Reset & base
+       ========================= */
+    *{box-sizing: border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, var(--bg) 0%, #070707 100%);
+      color: var(--accent-2);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.6;
+    }
+
+    a{ color: var(--accent-2); text-decoration:none; }
+    img{ max-width:100%; display:block; }
+
+    /* =========================
+       Page container
+       ========================= */
+    .container{
+      width:90%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    /* =========================
+       Header & Navigation
+       ========================= */
+    header.site-header{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      z-index:60;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.12));
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      padding: 18px 0;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:var(--accent-2);
+    }
+    .brand .logo{
+      width:48px;height:48px;border-radius:10px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      display:flex;align-items:center;justify-content:center;
+      font-family:"Playfair Display", serif;
+      font-weight:700;
+      color:var(--accent);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+    }
+    .brand h1{ font-family:"Playfair Display", serif; font-size:1.05rem; margin:0; letter-spacing:0.6px; }
+
+    nav.primary-nav{
+      display:flex;
+      align-items:center;
+      gap:20px;
+    }
+    nav.primary-nav ul{ display:flex; gap:18px; margin:0; padding:0; list-style:none; align-items:center; }
+    nav.primary-nav li a{ color:var(--accent-2); padding:8px 10px; font-weight:500; opacity:0.95; }
+    nav.primary-nav li a:hover{ color:var(--accent); transform:translateY(-2px); }
+
+    /* CTA in nav */
+    .cta{
+      background: linear-gradient(90deg, rgba(199,168,107,0.12), rgba(199,168,107,0.06));
+      border: 1px solid rgba(199,168,107,0.22);
+      color: var(--accent);
+      padding:10px 14px;
+      border-radius: 10px;
+      font-weight:600;
+      transition: var(--transition);
+    }
+    .cta:hover{ box-shadow: 0 8px 30px rgba(199,168,107,0.12); transform: translateY(-3px); }
+
+    /* Mobile hamburger */
+    .hamburger{
+      display:none;
+      background:transparent;
+      border:0;
+      color:var(--accent-2);
+      font-size:1.2rem;
+    }
+
+    /* =========================
+       HERO
+       ========================= */
+    #hero{
+      position:relative;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--accent-2);
+      overflow:hidden;
+    }
+
+    /* Video background */
+    #hero video{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      z-index:0;
+      filter:contrast(1.02) saturate(1.03) brightness(0.55);
+    }
+    /* dark overlay */
+    #hero::before{
+      content:"";
+      position:absolute; inset:0; z-index:1;
+      background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.6));
+    }
+
+    /* hero content */
+    .hero-content{
+      position:relative;
+      z-index:10;
+      width:90%;
+      max-width:1100px;
+      margin:auto;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:20px;
+      align-items:center;
+      text-align:left;
+    }
+    .eyebrow{
+      font-family:"Poppins";
+      color:var(--accent);
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-size:0.78rem;
+    }
+    .hero-title{
+      font-family:"Playfair Display", serif;
+      font-size: clamp(2.2rem, 4.8vw, 4.2rem);
+      line-height:1.02;
+      margin:0 0 6px 0;
+      letter-spacing: -1px;
+      color: var(--accent-2);
+    }
+    .hero-sub{
+      color:var(--muted);
+      max-width:720px;
+      font-size:1.05rem;
+    }
+    .hero-actions{ display:flex; gap:12px; margin-top:12px; align-items:center; flex-wrap:wrap; }
+    .btn{
+      padding:12px 18px;
+      border-radius:10px;
+      font-weight:600;
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.06);
+      transition: var(--transition);
+    }
+    .btn.primary{
+      background: linear-gradient(90deg, rgba(199,168,107,0.18), rgba(199,168,107,0.08));
+      border-color: rgba(199,168,107,0.28);
+      color:var(--accent);
+    }
+    .btn.ghost{ color:var(--accent-2); border-color: rgba(255,255,255,0.06); }
+
+    /* small hint under hero */
+    .hero-meta{ margin-top:18px; color:var(--muted); font-size:0.95rem; }
+
+    /* =========================
+       Sections: common styles
+       ========================= */
+    section{
+      padding: 80px 0;
+      position:relative;
+    }
+    section .section-inner{ display:flex; gap:28px; align-items:center; flex-wrap:wrap; }
+    /* section title with hashtag */
+    h2.section-title{
+      font-family:"Playfair Display", serif;
+      font-size:1.6rem;
+      margin:0 0 18px 0;
+      color:var(--accent-2);
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    /* pseudo-hashtag before heading */
+    h2.section-title::before{
+      content:"#";
+      color:var(--accent);
+      font-weight:700;
+      font-size:1.2rem;
+      font-family:"Poppins";
+      opacity:1;
+    }
+    p.lead{ color:var(--muted); margin:0 0 14px 0; max-width:72ch; }
+
+    /* layout utilities */
+    .grid{ display:grid; gap:20px; }
+    .grid.cols-3{ grid-template-columns: repeat(1, 1fr); }
+    @media(min-width:700px){ .grid.cols-3{ grid-template-columns: repeat(3, 1fr); } }
+
+    /* card */
+    .card{
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding:18px;
+      border: 1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 6px 30px rgba(0,0,0,0.5);
+    }
+
+    /* =========================
+       ABOUT
+       ========================= */
+    #about .about-grid{
+      display:grid;
+      gap:24px;
+      grid-template-columns: 1fr;
+    }
+    @media(min-width:900px){
+      #about .about-grid{ grid-template-columns: 420px 1fr; align-items:center; }
+    }
+    .profile-photo{
+      width:100%;
+      max-width:420px;
+      border-radius:14px;
+      overflow:hidden;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .profile-photo img{ width:100%; height:auto; display:block; }
+
+    .about-meta{ display:flex; gap:14px; flex-wrap:wrap; margin-top:16px; }
+    .skill-pill{
+      background:var(--glass);
+      padding:10px 12px;
+      border-radius:10px;
+      font-weight:600;
+      font-size:0.95rem;
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      border:1px solid rgba(255,255,255,0.03);
+    }
+
+    /* =========================
+       TESTIMONIALS
+       ========================= */
+    .testimonials{ display:grid; gap:18px; grid-template-columns: 1fr; }
+    @media(min-width:900px){ .testimonials{ grid-template-columns: repeat(2, 1fr);} }
+    .testimonial{
+      display:flex; gap:14px; align-items:flex-start;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:16px; border-radius:12px;
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    .testimonial .avatar{
+      width:64px;height:64px;border-radius:12px;overflow:hidden; flex-shrink:0;
+      border:1px solid rgba(255,255,255,0.04);
+    }
+    .testimonial p { margin:0; color:var(--muted); font-size:0.98rem; }
+
+    /* =========================
+       PORTFOLIO (properties)
+       ========================= */
+    .portfolio-grid{
+      display:grid;
+      gap:18px;
+      grid-template-columns: 1fr;
+    }
+    @media(min-width:700px){ .portfolio-grid{ grid-template-columns: repeat(2, 1fr);} }
+    @media(min-width:1100px){ .portfolio-grid{ grid-template-columns: repeat(3, 1fr);} }
+
+    .property{
+      position:relative;
+      border-radius:12px;
+      overflow:hidden;
+      min-height:220px;
+    }
+    .property img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .property .overlay{
+      position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end;
+      padding:18px; background:linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.6));
+    }
+    .property .meta{ color:var(--accent-2); font-weight:700; font-family:"Playfair Display"; font-size:1.05rem; }
+    .property .sub{ color:var(--muted); font-size:0.92rem; margin-top:4px; }
+
+    /* modal for property */
+    .modal{
+      position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:200;
+      background: rgba(0,0,0,0.6); padding:20px;
+    }
+    .modal.open{ display:flex; }
+    .modal .modal-card{ width:100%; max-width:900px; background:var(--card-bg); padding:18px; border-radius:12px; }
+    .modal .close{ float:right; border:0; background:transparent; color:var(--muted); font-size:1.2rem; }
+
+    .btn-port{
+padding:12px 18px;
+      border-radius:10px;
+      font-weight:600;
+      background-color: #060606;
+      color: #c7a86b;
+      cursor: pointer;
+      background:transparent;
+      border:1px solid rgba(300,300,255,0.06);
+      transition: var(--transition);
+    }
+
+    /* =========================
+       BLOG & EVENTS
+       ========================= */
+    .post-card{ display:flex; gap:12px; align-items:flex-start; }
+    .post-card .thumb{ width:120px; height:80px; overflow:hidden; border-radius:8px; flex-shrink:0; }
+    .post-card h3{ margin:0; font-size:1rem; font-family:"Playfair Display"; }
+    .post-card p{ margin:6px 0 0 0; color:var(--muted); font-size:0.95rem; }
+
+    /* =========================
+       CONTACT / CONNECT
+       ========================= */
+    .connect-grid{ display:grid; gap:20px; grid-template-columns: 1fr; }
+    @media(min-width:900px){ .connect-grid{ grid-template-columns: 420px 1fr; } }
+    .contact-card{ padding:18px; border-radius:12px; background:var(--card-bg); border:1px solid rgba(255,255,255,0.02); }
+    .contact-list{ display:flex; flex-direction:column; gap:12px; }
+    .contact-item{ display:flex; gap:12px; align-items:center; }
+    .contact-item i{ width:36px; height:36px; display:flex; align-items:center; justify-content:center; border-radius:8px; background:rgba(255,255,255,0.03); }
+
+    /* contact form */
+    form.contact-form{ display:flex; flex-direction:column; gap:12px; }
+    form .field{ display:flex; flex-direction:column; gap:6px; }
+    input[type="text"], input[type="email"], textarea{
+      background:transparent; border:1px solid rgba(255,255,255,0.04); padding:12px; border-radius:10px; color:var(--accent-2);
+      font-size:0.95rem;
+    }
+    textarea{ min-height:140px; resize:vertical; }
+
+    /* =========================
+       Footer
+       ========================= */
+    footer.site-footer{
+      padding:28px 0;
+      border-top: 1px solid rgba(255,255,255,0.02);
+      color:var(--muted);
+    }
+    .socials{ display:flex; gap:12px; align-items:center; }
+
+    /* =========================
+       Responsive: show hamburger on small
+       ========================= */
+    @media(max-width:900px){
+      nav.primary-nav{ display:none; }
+      .hamburger{ display:inline-flex; }
+      .hero-content{ text-align:center; }
+      h2.section-title{text-align:center}
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- =========================
+       Header / Navigation
+       ========================= -->
+  <header class="site-header" role="banner">
+    <div class="container nav-inner">
+      <a href="#hero" class="brand" aria-label="Emma Carter - Home">
+        <div class="logo">EC</div>
+        <div>
+          <h1>Emma Carter</h1>
+          <div style="font-size:0.75rem; color:var(--muted); margin-top:2px;">Luxury Real Estate — Dubai</div>
+        </div>
+      </a>
+
+      <!-- Primary nav (desktop) -->
+      <nav class="primary-nav" role="navigation" aria-label="Primary">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a class="cta" href="#connect">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Mobile hamburger -->
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <i class="fa fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Mobile menu (hidden by default) -->
+    <nav id="mobileMenu" style="display:none; padding:12px 0; border-top:1px solid rgba(255,255,255,0.02);">
+      <div class="container">
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px;">
+          <li><a href="#about">About</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a class="cta" href="#connect">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- =========================
+       HERO: video background with overlay & CTAs
+       NOTE: the video path is images/hero-video.mp4 (provided by you)
+       ========================= -->
+  <main>
+    <section id="hero" aria-label="Hero">
+      <!-- background video -->
+      <video id="heroVideo" autoplay muted loop playsinline poster="images/intro.jpg">
+        <source src="images/hero-video.mp4" type="video/mp4">
+        <!-- fallback image if video not supported -->
+      </video>
+
+      <div class="hero-content container">
+        <div class="eyebrow">Dubai Luxury Real Estate</div>
+        <h2 class="hero-title">Emma Carter — Your Guide to Dubai's Finest Residences</h2>
+        <p class="hero-sub">
+          Decades of experience connecting discerning buyers with exceptional properties. Personalized service, discreet listings, and unmatched local insight.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="#portfolio">View Portfolio</a>
+          <a class="btn ghost" href="#connect">Contact Emma</a>
+        </div>
+
+        <div class="hero-meta">Featured properties in Palm Jumeirah, Downtown Dubai & Marina. Private consultations by appointment.</div>
+      </div>
+    </section>
+
+    <!-- =========================
+         ABOUT (id = about)
+         Contains vertical profile image (images/intro.jpg), bio text, quick stats/skills
+         ========================= -->
+    <section id="about" aria-label="About Emma">
+      <div class="container">
+        <h2 class="section-title">About</h2>
+        <div class="about-grid section-inner">
+          <!-- Profile photo -->
+          <div class="profile-photo card">
+            <!-- CHANGE: replace images/intro.jpg with your vertical portrait -->
+            <img src="images/intro.jpg" alt="Emma Carter portrait — Luxury real estate advisor">
+          </div>
+
+          <!-- Bio & skills -->
+          <div>
+            <p class="lead">
+              Emma Carter is a luxury real estate advisor in Dubai with over <strong>12 years</strong> of experience serving high-net-worth clients.
+              From exclusive off-market opportunities to bespoke sales strategies, Emma blends market intuition with a refined client-first approach.
+            </p>
+
+            <!-- Quick stats / awards -->
+            <div class="about-meta">
+              <div class="skill-pill"><i class="fa-solid fa-award"></i>&nbsp;Top 5 Agent — Dubai 2023</div>
+              <div class="skill-pill"><i class="fa-solid fa-handshake"></i>&nbsp;200+ Deals Closed</div>
+              <div class="skill-pill"><i class="fa-solid fa-globe"></i>&nbsp;International Buyer Network</div>
+            </div>
+
+            <!-- longer narrative (storytelling tone) -->
+            <div style="margin-top:18px; color:var(--muted);">
+              <!-- EDIT: change the paragraphs to reflect real achievements and tone -->
+              <p>
+                Emma began her career focusing on ultra-luxury developments and private residences. She prioritizes confidentiality, market timing, and negotiation precision.
+              </p>
+              <p>
+                Whether representing sellers seeking white-glove marketing or buyers searching for rare waterfront homes, Emma's goal is a smooth, high-value outcome.
+              </p>
+            </div>
+
+            <!-- Skills list -->
+            <div style="margin-top:18px;">
+              <h3 style="font-family:'Playfair Display', serif; margin:0 0 8px 0;">Core Expertise</h3>
+              <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;">
+                <span class="skill-pill"><i class="fa-solid fa-city"></i>&nbsp;Prime Dubai Markets</span>
+                <span class="skill-pill"><i class="fa-solid fa-chart-line"></i>&nbsp;Pricing Strategy</span>
+                <span class="skill-pill"><i class="fa-solid fa-user-secret"></i>&nbsp;Discreet Listings</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         TESTIMONIALS (id = testimonials)
+         Use provided avatar links for faces
+         ========================= -->
+    <section id="testimonials" aria-label="Client testimonials">
+      <div class="container">
+        <h2 class="section-title">Testimonials</h2>
+        <p class="lead">Short storytelling testimonials — authentic, client-focused, and results-driven.</p>
+
+        <div class="testimonials">
+          <!-- Testimonial 1 -->
+          <div class="testimonial card">
+            <div class="avatar"><img src="https://i.pravatar.cc/80?img=32" alt="Client avatar"></div>
+            <div>
+              <strong style="color:var(--accent);">Amir H.</strong>
+              <p>
+                "We were moving from overseas and Emma handled everything — viewings, private tours, and negotiation. Within a week she found our beachfront home. A calm, professional experience."
+              </p>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial card">
+            <div class="avatar"><img src="https://i.pravatar.cc/80?img=18" alt="Client avatar"></div>
+            <div>
+              <strong style="color:var(--accent);">Sophia R.</strong>
+              <p>
+                "Emma's market insights were exceptional. She helped us price and stage our apartment, and it sold above asking. She's detail oriented and always one step ahead."
+              </p>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial card">
+            <div class="avatar"><img src="https://i.pravatar.cc/80?img=25" alt="Client avatar"></div>
+            <div>
+              <strong style="color:var(--accent);">Michael T.</strong>
+              <p>
+                "From exclusive tours to legal referrals, Emma created an effortless experience. The personal touch made all the difference."
+              </p>
+            </div>
+          </div>
+
+          <!-- Testimonial 4 -->
+          <div class="testimonial card">
+            <div class="avatar"><img src="https://i.pravatar.cc/80?img=12" alt="Client avatar"></div>
+            <div>
+              <strong style="color:var(--accent);">Lina K.</strong>
+              <p>
+                "A trusted advisor — calm, clear, and effective. She helped us renovate and relist for a premium exit price."
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         PORTFOLIO (id = portfolio)
+         6 properties, images: images/pic01.jpg ... images/pic06.jpg
+         Clicking opens simple modal with larger image & details
+         ========================= -->
+    <section id="portfolio" aria-label="Portfolio — Properties">
+      <div class="container">
+        <h2 class="section-title">Portfolio</h2>
+        <p class="lead">Selected luxury residences sold or represented by Emma.</p>
+
+        <div class="portfolio-grid">
+          <!-- Each property: change image path and title/description as needed -->
+          <div class="property card" data-title="Palm Jumeirah Villa" data-desc="Private waterfront villa — 6BR, private pier." data-img="images/pic01.jpg">
+            <img src="images/pic04.jpg" alt="Palm Jumeirah Villa">
+            <div class="overlay">
+              <div class="meta">Palm Jumeirah Villa</div>
+              <div class="sub">6 bed • Private waterfront • AED 35M</div>
+              <div style="margin-top:8px;">
+                <button class="btn-port" onclick="openProperty(this)">View</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="property card" data-title="Marina Penthouse" data-desc="Skyline views, private lift access." data-img="images/pic02.jpg">
+            <img src="images/pic02.jpg" alt="Marina Penthouse">
+            <div class="overlay">
+              <div class="meta">Marina Penthouse</div>
+              <div class="sub">4 bed • Panoramic views • AED 18M</div>
+              <div style="margin-top:8px;"><button class="btn-port" onclick="openProperty(this)">View</button></div>
+            </div>
+          </div>
+
+          <div class="property card" data-title="Downtown Duplex" data-desc="Iconic location, five-star services." data-img="images/pic03.jpg">
+            <img src="images/pic03.jpg" alt="Downtown Duplex">
+            <div class="overlay">
+              <div class="meta">Downtown Duplex</div>
+              <div class="sub">3 bed • Iconic location • AED 12M</div>
+              <div style="margin-top:8px;"><button class="btn-port" onclick="openProperty(this)">View</button></div>
+            </div>
+          </div>
+
+          <div class="property card" data-title="Island Residence" data-desc="Secluded island home, private garden." data-img="images/pic04.jpg">
+            <img src="images/pic01.jpg" alt="Island Residence">
+            <div class="overlay">
+              <div class="meta">Island Residence</div>
+              <div class="sub">5 bed • Private garden • AED 28M</div>
+              <div style="margin-top:8px;"><button class="btn-port" onclick="openProperty(this)">View</button></div>
+            </div>
+          </div>
+
+          <div class="property card" data-title="Golf Course Estate" data-desc="Estate overlooking championship course." data-img="images/pic05.jpg">
+            <img src="images/pic05.jpg" alt="Golf Course Estate">
+            <div class="overlay">
+              <div class="meta">Golf Course Estate</div>
+              <div class="sub">7 bed • Private pool • AED 22M</div>
+              <div style="margin-top:8px;"><button class="btn-port" onclick="openProperty(this)">View</button></div>
+            </div>
+          </div>
+
+          <div class="property card" data-title="Skyline Residence" data-desc="Sleek modern apartment high above the city." data-img="images/pic06.jpg">
+            <img src="images/pic06.jpg" alt="Skyline Residence">
+            <div class="overlay">
+              <div class="meta">Skyline Residence</div>
+              <div class="sub">2 bed • Luxury finishes • AED 6.5M</div>
+              <div style="margin-top:8px;"><button class="btn-port" onclick="openProperty(this)">View</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal for property details -->
+      <div id="propertyModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal-card">
+          <button class="close" aria-label="Close" onclick="closeModal()">✕</button>
+          <div style="display:grid; gap:12px; grid-template-columns: 1fr; margin-top:6px;">
+            <img id="modalImage" src="" alt="Property image" style="width:100%; height:auto; border-radius:10px; max-height:480px; object-fit:cover;">
+            <div>
+              <h3 id="modalTitle" style="font-family:'Playfair Display', serif; margin:0;"></h3>
+              <p id="modalDesc" style="color:var(--muted); margin-top:8px;"></p>
+              <div style="margin-top:10px;">
+                <a class="btn primary" href="#connect">Contact about this property</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- =========================
+         BLOG (id = blog) — sample posts
+         images: images/pic07.jpg, pic08.jpg, pic09.jpg
+         ========================= -->
+    <section id="blog" aria-label="Blog">
+      <div class="container">
+        <h2 class="section-title">Blog</h2>
+        <p class="lead">Market insights, staging tips, and Dubai lifestyle features.</p>
+
+        <div class="grid cols-3">
+          <article class="card post-card">
+            <div>
+              <h3>How to Price Your Luxury Home in Dubai</h3>
+              <p>Practical strategy for sellers to maximize value in today's market.</p>
+              <a href="#" aria-label="Read more">Read →</a>
+            </div>
+          </article>
+
+          <article class="card post-card">
+            <div>
+              <h3>Staging for High-End Buyers</h3>
+              <p>Styling tips that bring offers above asking price.</p>
+              <a href="#" aria-label="Read more">Read →</a>
+            </div>
+          </article>
+
+          <article class="card post-card">
+            <div>
+              <h3>Investment Trends: Dubai 2025</h3>
+              <p>Key neighbourhoods, yields, and what to watch this year.</p>
+              <a href="#" aria-label="Read more">Read →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         EVENTS (id = events)
+         list of events / awards with image + link to Instagram post
+         ========================= -->
+    <section id="events" aria-label="Events & Awards">
+      <div class="container">
+        <h2 class="section-title">Events</h2>
+        <p class="lead">Selected events, awards, and client gatherings.</p>
+
+        <div class="grid cols-3">
+          <div class="card" style="display:flex; gap:12px; align-items:flex-start;">
+            <div>
+              <h3 style="margin:0;">Elite Realtors Gala 2024</h3>
+              <p style="margin:8px 0 0 0; color:var(--muted);">Recognized for excellence in luxury sales.</p>
+              <!-- CHANGE: replace with actual Instagram permalink for the event -->
+              <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Event on Instagram">View on Instagram ↗</a>
+            </div>
+          </div>
+
+          <div class="card" style="display:flex; gap:12px; align-items:flex-start;">
+            <div>
+              <h3 style="margin:0;">Private Client Showcase</h3>
+              <p style="margin:8px 0 0 0; color:var(--muted);">Exclusive viewing event for top-tier buyers.</p>
+              <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Event on Instagram">View on Instagram ↗</a>
+            </div>
+          </div>
+
+          <div class="card" style="display:flex; gap:12px; align-items:flex-start;">
+            <div>
+              <h3 style="margin:0;">Luxury Property Awards</h3>
+              <p style="margin:8px 0 0 0; color:var(--muted);">Finalist for Best Sales Strategy.</p>
+              <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Event on Instagram">View on Instagram ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         CONNECT / CONTACT (id = connect)
+         Important: this is client-side only. Uses mailto: and tel:
+         ========================= -->
+<!-- ===========================
+     CONNECT SECTION (LUXURY DESIGN)
+=========================== -->
+<section id="connect" aria-label="Contact" style="padding:80px 20px; background:var(--bg-dark, #0f0f0f); color:#fff; text-align:center;">
+  
+  <!-- SECTION TITLE -->
+  <h2 style="
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--gold, #c7a86b);
+      margin-bottom: 10px;
+  ">
+    Connect with Emma Carter
+  </h2>
+  
+  <!-- SUBTITLE / LEAD TEXT -->
+  <p style="
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 50px;
+      color: #ccc;
+  ">
+    Book a private consultation or gain access to exclusive Dubai luxury listings.
+  </p>
+
+  <!-- CONTACT CONTAINER -->
+  <div style="
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      max-width: 800px;
+      margin: 0 auto;
+  ">
+
+    <!-- CONTACT CARD -->
+    <div style="
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        padding: 40px;
+        border-radius: 20px;
+        width: 100%;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        text-align: left;
+    ">
+      
+      <!-- CARD TITLE -->
+      <h3 style="
+          font-size: 1.8rem;
+          font-family: 'Playfair Display', serif;
+          margin-bottom: 25px;
+          color: var(--gold, #c7a86b);
+      ">
+        Contact Details
+      </h3>
+
+      <!-- CONTACT LIST -->
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+
+        <!-- PHONE -->
+        <div style="display: flex; align-items: center; gap: 15px;">
+          <i class="fa-solid fa-phone" style="font-size: 1.5rem; color: var(--gold, #c7a86b);"></i>
+          <div>
+            <div style="font-weight:700; font-size:1rem;">Phone</div>
+            <a href="tel:+971500000000" style="color:#ccc; text-decoration:none; font-size:1.1rem;">+971 50 000 0000</a>
+          </div>
+        </div>
+
+        <!-- EMAIL -->
+        <div style="display: flex; align-items: center; gap: 15px;">
+          <i class="fa-solid fa-envelope" style="font-size: 1.5rem; color: var(--gold, #c7a86b);"></i>
+          <div>
+            <div style="font-weight:700; font-size:1rem;">Email</div>
+            <a href="mailto:emma@davidlawson.com" style="color:#ccc; text-decoration:none; font-size:1.1rem;">emma@davidlawson.com</a>
+          </div>
+        </div>
+
+        <!-- ADDRESS -->
+        <div style="display: flex; align-items: center; gap: 15px;">
+          <i class="fa-solid fa-location-dot" style="font-size: 1.5rem; color: var(--gold, #c7a86b);"></i>
+          <div>
+            <div style="font-weight:700; font-size:1rem;">Office</div>
+            <div style="color:#ccc; font-size:1.1rem;">Downtown Dubai — By Appointment</div>
+          </div>
+        </div>
+
+        <!-- SOCIAL MEDIA -->
+        <div style="margin-top:20px;">
+          <div style="font-weight:700; margin-bottom:12px; font-size:1.1rem;">Social</div>
+          <div style="display:flex; gap:20px; font-size:1.6rem;">
+            <!-- INSTAGRAM -->
+            <a href="https://instagram.com" aria-label="Instagram" target="_blank" style="color:var(--gold, #c7a86b); transition:0.3s;">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <!-- LINKEDIN -->
+            <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" style="color:var(--gold, #c7a86b); transition:0.3s;">
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+            <!-- X / TWITTER -->
+            <a href="https://x.com" aria-label="X" target="_blank" style="color:var(--gold, #c7a86b); transition:0.3s;">
+              <i class="fa-brands fa-twitter"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FONT AWESOME CDN (NEEDED FOR ICONS) -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+    <!-- =========================
+         Footer
+         ========================= -->
+    <footer class="site-footer">
+      <div class="container" style="display:flex; justify-content:space-between; gap:20px; align-items:center; flex-wrap:wrap;">
+        <div>
+          <strong style="font-family:'Playfair Display', serif; color:var(--accent);">Emma Carter</strong>
+          <div style="color:var(--muted);">Luxury real estate advisor — Dubai</div>
+        </div>
+
+        <div style="color:var(--muted);">© <span id="year"></span> Emma Carter. All rights reserved.</div>
+
+        <div>
+          <div class="socials">
+            <!-- EDIT: replace with real links -->
+            <a href="https://instagram.com" aria-label="Instagram" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://x.com" aria-label="X" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- =========================
+       INTERNAL JAVASCRIPT
+       - mobile menu toggle
+       - smooth scroll
+       - modal open/close
+       - contact form mailto builder
+       - hero video play/pause for mobile
+       ========================= -->
+  <script>
+    /* =========================
+       Helper: wait for DOM
+       ========================= */
+    document.addEventListener('DOMContentLoaded', function(){
+
+      /* ===============
+         1) Year in footer
+         =============== */
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      /* ===============
+         2) Mobile menu toggle
+         =============== */
+      var hamburger = document.getElementById('hamburger');
+      var mobileMenu = document.getElementById('mobileMenu');
+      hamburger.addEventListener('click', function(){
+        if(mobileMenu.style.display === 'none' || mobileMenu.style.display === ''){
+          mobileMenu.style.display = 'block';
+          hamburger.innerHTML = '<i class="fa fa-times"></i>';
+        } else {
+          mobileMenu.style.display = 'none';
+          hamburger.innerHTML = '<i class="fa fa-bars"></i>';
+        }
+      });
+
+      /* ===============
+         3) Smooth scroll for internal links
+         =========================
+         This code will catch any anchor links that start with '#'
+         and smoothly scroll to the target. Works for desktop & mobile.
+         ========================= */
+      document.querySelectorAll('a[href^="#"]').forEach(function(anchor){
+        anchor.addEventListener('click', function(e){
+          var targetId = this.getAttribute('href').slice(1);
+          var target = document.getElementById(targetId);
+          if(target){
+            e.preventDefault();
+            // close mobile menu if open
+            if(window.innerWidth <= 900 && mobileMenu.style.display === 'block'){
+              mobileMenu.style.display = 'none';
+              hamburger.innerHTML = '<i class="fa fa-bars"></i>';
+            }
+            // smooth scroll
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+
+      /* ===============
+         4) Modal close when clicking overlay
+         =============== */
+      var modal = document.getElementById('propertyModal');
+      modal.addEventListener('click', function(e){
+        if(e.target === modal){
+          closeModal();
+        }
+      });
+
+      /* ===============
+         5) Ensure video is muted on autoplay for mobile
+         (some mobile browsers block autoplay unless muted & playsinline)
+         =============== */
+      var heroVideo = document.getElementById('heroVideo');
+      if(heroVideo){
+        heroVideo.muted = true;
+        heroVideo.playsInline = true;
+        // If the device is small, pause video to save bandwidth (optional)
+        if(window.innerWidth < 500){
+          heroVideo.pause();
+        }
+      }
+
+    }); // DOMContentLoaded end
+
+    /* =========================
+       Open property modal
+       - button element is within .property and has access to dataset via parentNode
+       ========================= */
+    function openProperty(btn){
+      // Get the parent .property element (closest ancestor)
+      var property = btn.closest('.property');
+      if(!property) return;
+
+      var title = property.dataset.title || "Property";
+      var desc = property.dataset.desc || "";
+      var img = property.dataset.img || "";
+
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalDesc').textContent = desc;
+      document.getElementById('modalImage').src = img;
+      document.getElementById('modalImage').alt = title;
+
+      var modal = document.getElementById('propertyModal');
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+    }
+
+    function closeModal(){
+      var modal = document.getElementById('propertyModal');
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+    }
+
+    /* =========================
+       Contact form handler
+       - This builds a mailto: link with subject/body prefilled
+       - Replace with real submission to backend when available
+       ========================= */
+    function handleContactSubmit(e){
+      e.preventDefault();
+      var name = document.getElementById('name').value.trim();
+      var email = document.getElementById('email').value.trim();
+      var message = document.getElementById('message').value.trim();
+
+      // Basic validation
+      if(!name || !email || !message){
+        alert('Please complete all fields.');
+        return;
+      }
+
+      // Build mailto
+      var to = 'emma@davidlawson.com'; // EDIT: change to real email
+      var subject = encodeURIComponent('Website contact: ' + name);
+      var body = encodeURIComponent(
+        'Name: ' + name + '\\n' +
+        'Email: ' + email + '\\n\\n' +
+        message
+      );
+
+      // Open user's mail client
+      var mailto = 'mailto:' + to + '?subject=' + subject + '&body=' + body;
+      window.location.href = mailto;
+    }
+
+    /* =========================
+       Accessibility: close modal on ESC
+       ========================= */
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape'){
+        closeModal();
+      }
+    });
+
+  </script>
+</body>
+</html>
